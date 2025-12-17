@@ -55,6 +55,9 @@ export function renderPlayer(container, slug) {
   iframe.frameBorder = '0';
   iframe.scrolling = 'no';
   iframe.allowFullscreen = true;
+  // Sandbox: IMPORTANT to prevent "block-and-redirect" scripts from navigating the top window
+  // We omit 'allow-top-navigation' and 'allow-top-navigation-by-user-activation'
+  iframe.sandbox = "allow-scripts allow-same-origin allow-popups allow-forms allow-pointer-lock";
   iframe.allow = "autoplay; fullscreen; monetization; clipboard-write; web-share; accelerometer; magnetometer; gyroscope; display-capture";
 
   // Append to wrapper
