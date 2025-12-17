@@ -1,11 +1,11 @@
 export function renderSidebar() {
-    const aside = document.createElement('aside');
-    aside.className = 'sidebar';
+  const aside = document.createElement('aside');
+  aside.className = 'sidebar';
 
-    // Basic styles inline for now, ideally in CSS
-    // Using utility classes from style.css once added
+  // Basic styles inline for now, ideally in CSS
+  // Using utility classes from style.css once added
 
-    const template = `
+  const template = `
     <div class="logo-area">
       <h1>Portal</h1>
     </div>
@@ -30,6 +30,28 @@ export function renderSidebar() {
     </div>
   `;
 
-    aside.innerHTML = template;
-    return aside;
+  aside.innerHTML = template;
+
+  // Active State Logic
+  const updateActiveState = () => {
+    const hash = window.location.hash || '#/';
+    const navItems = aside.querySelectorAll('.nav-item');
+
+    navItems.forEach(item => {
+      const href = item.getAttribute('href');
+      if (href === hash) {
+        item.classList.add('active');
+      } else {
+        item.classList.remove('active');
+      }
+    });
+  };
+
+  window.addEventListener('hashchange', updateActiveState);
+  window.addEventListener('popstate', updateActiveState);
+
+  // Initial check
+  setTimeout(updateActiveState, 0);
+
+  return aside;
 }

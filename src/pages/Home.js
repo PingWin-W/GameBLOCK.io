@@ -33,16 +33,37 @@ export function renderHome(container) {
   searchInput.addEventListener('input', (e) => {
     const query = e.target.value.toLowerCase();
     const cards = grid.querySelectorAll('.game-card');
+    let hasResults = false;
 
     cards.forEach(card => {
       const name = card.querySelector('h3').textContent.toLowerCase();
       if (name.includes(query)) {
         card.style.display = 'block';
         card.style.animation = 'fadeIn 0.3s ease';
+        hasResults = true;
       } else {
         card.style.display = 'none';
       }
     });
+
+    const noResultsMsg = grid.querySelector('.no-results');
+    if (!hasResults) {
+      if (!noResultsMsg) {
+        const msg = document.createElement('div');
+        msg.className = 'no-results';
+        msg.style.gridColumn = '1 / -1';
+        msg.style.textAlign = 'center';
+        msg.style.padding = '2rem';
+        msg.style.color = 'var(--color-text-dim)';
+        msg.innerHTML = `<h3>No games found matching "${e.target.value}"</h3>`;
+        grid.appendChild(msg);
+      } else {
+        noResultsMsg.querySelector('h3').textContent = `No games found matching "${e.target.value}"`;
+        noResultsMsg.style.display = 'block';
+      }
+    } else if (noResultsMsg) {
+      noResultsMsg.style.display = 'none';
+    }
   });
 
   container.appendChild(section);
