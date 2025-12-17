@@ -6,7 +6,7 @@ export async function fetchGames() {
         // Determine the environment (dev vs prod path)
         // For local dev without build, valid path depends on server root. 
         // Assuming server root is v2_rebuild/
-        const response = await fetch('./src/data/games.json');
+        const response = await fetch(`./src/data/games.json?v=${Date.now()}`);
 
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
