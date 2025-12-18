@@ -1,4 +1,4 @@
-import { renderHeader } from './Header.js';
+import { renderFooter } from './Footer.js';
 
 export function renderLayout(parentElement) {
     // Container
@@ -15,6 +15,11 @@ export function renderLayout(parentElement) {
     main.className = 'main-content';
     container.appendChild(main);
 
-    // Mount to #app (Note: Footer is part of specific page templates or appended later)
+    // Footer
+    const footer = renderFooter();
+    container.appendChild(footer);
+
+    // Mount to #app
     parentElement.appendChild(container);
 }
+
