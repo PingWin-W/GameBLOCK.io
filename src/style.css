@@ -74,6 +74,7 @@ body {
   top: 0;
   z-index: 100;
   box-shadow: 5px 0 30px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
 }
 
 .logo-area h1 {
@@ -385,13 +386,15 @@ body {
     padding: 1rem;
   }
 }
+
 /* =========================================
    Rich Player Layout
    ========================================= */
 
 .player-layout {
   display: grid;
-  grid-template-columns: 1fr 300px; /* Sidebar width fixed */
+  grid-template-columns: 1fr 300px;
+  /* Sidebar width fixed */
   gap: 2rem;
   width: 100%;
   max-width: 1600px;
@@ -404,7 +407,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  min-width: 0; /* Fix grid overflow */
+  min-width: 0;
+  /* Fix grid overflow */
 }
 
 .game-wrapper {
@@ -417,7 +421,8 @@ body {
 
 .iframe-container {
   width: 100%;
-  aspect-ratio: 16/9; /* Maintain aspect ratio */
+  aspect-ratio: 16/9;
+  /* Maintain aspect ratio */
   background: #000;
 }
 
@@ -440,7 +445,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   border: 1px solid var(--glass-border);
   color: var(--color-text);
   padding: 0.6rem 1.2rem;
@@ -567,8 +572,9 @@ body {
   .player-layout {
     grid-template-columns: 1fr;
   }
-  
+
   .player-sidebar {
-    display: none; /* Hide sidebar on mobile/tablet or move to bottom */
+    display: none;
+    /* Hide sidebar on mobile/tablet or move to bottom */
   }
 }
