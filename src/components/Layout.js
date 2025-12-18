@@ -18,7 +18,3 @@ export function renderLayout(parentElement) {
     // Mount to #app (Note: Footer is part of specific page templates or appended later)
     parentElement.appendChild(container);
 }
-
-
-parentElement.appendChild(container); // Mount to #app
-}
