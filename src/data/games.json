@@ -230,5 +230,181 @@
     "slug": "physics-balls",
     "description": "Shoot balls and break bricks in Physics Balls. Utilize physics and angles to clear the screen in this satisfying arcade game.",
     "category": "Arcade"
+  },
+  {
+    "id": "retro-bowl",
+    "name": "Retro Bowl",
+    "slug": "retro-bowl",
+    "description": "Play Retro Bowl unblocked.",
+    "category": "Arcade",
+    "image": "./public/cache/data/image/game/retro-bowl/retro-bowl.jpg"
+  },
+  {
+    "id": "vex7",
+    "name": "Vex7",
+    "slug": "vex7",
+    "description": "Play Vex7 unblocked.",
+    "category": "Arcade",
+    "image": "./public/cache/data/image/game/vex7/vex7.jpeg"
+  },
+  {
+    "id": "moto-x3m",
+    "name": "Moto X3M",
+    "slug": "moto-x3m",
+    "description": "Play Moto X3M unblocked.",
+    "category": "Arcade",
+    "image": "./public/cache/data/image/game/moto-x3m/moto-x3m.jpg"
+  },
+  {
+    "id": "survival-race",
+    "name": "Survival Race",
+    "slug": "survival-race",
+    "description": "Play Survival Race unblocked.",
+    "category": "Arcade",
+    "image": "./public/cache/data/image/game/survival-race/survival-race.png"
+  },
+  {
+    "id": "2048",
+    "name": "2048",
+    "slug": "2048",
+    "description": "Play 2048 unblocked.",
+    "category": "Arcade",
+    "image": "./public/cache/data/image/options/no_image.png"
+  },
+  {
+    "id": "slope",
+    "name": "Slope",
+    "slug": "slope",
+    "description": "Play Slope unblocked.",
+    "category": "Arcade",
+    "image": "./public/cache/data/image/game/slope/slope.jpg"
+  },
+  {
+    "id": "vex6",
+    "name": "Vex6",
+    "slug": "vex6",
+    "description": "Play Vex6 unblocked.",
+    "category": "Arcade",
+    "image": "./public/cache/data/image/game/vex6/vex6.jpeg"
+  },
+  {
+    "id": "motox3m2",
+    "name": "Motox3M2",
+    "slug": "motox3m2",
+    "description": "Play Motox3M2 unblocked.",
+    "category": "Arcade",
+    "image": "./public/cache/data/image/game/motox3m2/motox3m2.jpg"
+  },
+  {
+    "id": "smash-karts",
+    "name": "Smash Karts",
+    "slug": "smash-karts",
+    "description": "Play Smash Karts unblocked.",
+    "category": "Arcade",
+    "image": "./public/cache/data/image/game/smash-karts/smash-karts.png"
+  },
+  {
+    "id": "run-3",
+    "name": "Run 3",
+    "slug": "run-3",
+    "description": "Play Run 3 unblocked.",
+    "category": "Arcade",
+    "image": "./public/cache/data/image/game/run-3/run-3.png"
+  },
+  {
+    "id": "bob-the-robber-2",
+    "name": "Bob The Robber 2",
+    "slug": "bob-the-robber-2",
+    "description": "Play Bob The Robber 2 unblocked.",
+    "category": "Arcade",
+    "image": "./public/cache/data/image/game/bob-the-robber-2/bob-the-robber-2.png"
+  },
+  {
+    "id": "time-shooter-3-swat",
+    "name": "Time Shooter 3 Swat",
+    "slug": "time-shooter-3-swat",
+    "description": "Play Time Shooter 3 Swat unblocked.",
+    "category": "Arcade",
+    "image": "./public/cache/data/image/game/time-shooter-3-swat/time-shooter-3-swat.jpg"
+  },
+  {
+    "id": "granny",
+    "name": "Granny",
+    "slug": "granny",
+    "description": "Play Granny unblocked.",
+    "category": "Arcade",
+    "image": "./public/cache/data/image/game/granny/granny.png"
+  },
+  {
+    "id": "snow-rider",
+    "name": "Snow Rider",
+    "slug": "snow-rider",
+    "description": "Play Snow Rider unblocked.",
+    "category": "Arcade",
+    "image": "./public/cache/data/image/game/snow-rider/snow-rider.png"
+  },
+  {
+    "id": "vex4",
+    "name": "Vex4",
+    "slug": "vex4",
+    "description": "Play Vex4 unblocked.",
+    "category": "Arcade",
+    "image": "./public/cache/data/image/game/vex4/vex4.jpg"
+  },
+  {
+    "id": "vex3",
+    "name": "Vex3",
+    "slug": "vex3",
+    "description": "Play Vex3 unblocked.",
+    "category": "Arcade",
+    "image": "./public/cache/data/image/game/vex3/vex3.jpg"
+  },
+  {
+    "id": "vex5",
+    "name": "Vex5",
+    "slug": "vex5",
+    "description": "Play Vex5 unblocked.",
+    "category": "Arcade",
+    "image": "./public/cache/data/image/game/vex5/vex5.jpg"
+  },
+  {
+    "id": "poly-track",
+    "name": "Poly Track",
+    "slug": "poly-track",
+    "description": "Play Poly Track unblocked.",
+    "category": "Arcade",
+    "image": "./public/cache/data/image/game/poly-track/poly-track.jpg"
+  },
+  {
+    "id": "drive-mad",
+    "name": "Drive Mad",
+    "slug": "drive-mad",
+    "description": "Play Drive Mad unblocked.",
+    "category": "Arcade",
+    "image": "./public/cache/data/image/game/drive-mad/drive-mad.jpg"
+  },
+  {
+    "id": "ARC",
+    "name": "Arc",
+    "slug": "ARC",
+    "description": "Play Arc unblocked.",
+    "category": "Arcade",
+    "image": "./public/cache/data/image/game/ARC/ARC.png"
+  },
+  {
+    "id": "repo",
+    "name": "Repo",
+    "slug": "repo",
+    "description": "Play Repo unblocked.",
+    "category": "Arcade",
+    "image": "./public/cache/data/image/game/repo/repo.png"
+  },
+  {
+    "id": "1v1lol",
+    "name": "1V1Lol",
+    "slug": "1v1lol",
+    "description": "Play 1V1Lol unblocked.",
+    "category": "Arcade",
+    "image": "./public/cache/data/image/options/no_image.png"
   }
 ]
