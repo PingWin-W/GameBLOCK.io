@@ -12,6 +12,7 @@ export function initRouter() {
 }
 
 async function handleLocation() {
+    window.scrollTo(0, 0);
     const path = window.location.pathname;
     const searchParams = new URLSearchParams(window.location.search);
 
