@@ -6,9 +6,16 @@ import { initRouter } from './router.js';
 async function init() {
   const app = document.getElementById('app');
 
-  // Check for static content - REMOVED to force router initialization for Dynamic SEO
-  // if (app.children.length > 0) { ... }
-  // We want the router to take over so we can handle SEO dynamically.
+  // ABORT if on a static policy page (privacy, terms, about, contact)
+  // This prevents the SPA router from wiping the static content
+  const path = window.location.pathname;
+  if (path.includes('privacy.html') ||
+    path.includes('terms.html') ||
+    path.includes('about.html') ||
+    path.includes('contact.html')) {
+    console.log('Static page detected, skipping SPA init');
+    return;
+  }
 
   // Show loading state
   app.innerHTML = '<div style="display:flex;justify-content:center;align-items:center;width:100%;height:100vh;">Loading assets...</div>';

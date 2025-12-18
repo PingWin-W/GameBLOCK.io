@@ -25,6 +25,25 @@ export function renderSidebar() {
       </a>
     </nav>
     
+    <div style="margin-top: 1rem; border-top: 1px solid var(--glass-border); padding-top: 1rem;">
+      <a href="./about.html" class="nav-item">
+        <span class="icon">ℹ️</span>
+        <span>About</span>
+      </a>
+      <a href="./contact.html" class="nav-item">
+        <span class="icon">📧</span>
+        <span>Contact</span>
+      </a>
+      <a href="./privacy.html" class="nav-item" style="font-size: 0.9em; opacity: 0.8;">
+        <span class="icon">🔒</span>
+        <span>Privacy</span>
+      </a>
+      <a href="./terms.html" class="nav-item" style="font-size: 0.9em; opacity: 0.8;">
+        <span class="icon">📜</span>
+        <span>Terms</span>
+      </a>
+    </div>
+    
     <div class="nav-footer">
       <span class="version">v2.0</span>
     </div>
