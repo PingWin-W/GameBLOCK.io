@@ -128,6 +128,96 @@ new_games.reverse()
 generate_grid_page(new_games, 'New Games', 'new.html', active_nav='new')
 
 
+# 3.5 Helper to Generate Content Pages
+def generate_content_page(title, content_html, output_filename, seo_title='', seo_desc=''):
+    print(f'Generating {output_filename}...')
+    
+    if not seo_title:
+        seo_title = f"{title} - Modern Game Portal"
+    if not seo_desc:
+        seo_desc = f"{title} for Modern Game Portal."
+    
+    seo_image = f"{base_url}/public/cache/data/image/options/geometry_dash.png"
+    seo_url = f"{base_url}/{output_filename}"
+    
+    # Add to sitemap
+    sitemap_urls.append(seo_url)
+    
+    page_html = f'''
+      <section class="content-page" style="max-width: 800px; margin: 0 auto; padding: 2rem;">
+        <header class="page-header">
+          <h2>{title}</h2>
+        </header>
+        <div class="glass-panel" style="background: var(--glass); padding: 2rem; border-radius: var(--radius); border: 1px solid var(--glass-border);">
+          {content_html}
+        </div>
+      </section>
+    '''
+
+    page_content = template.replace(
+        '<main id="main-content" class="main-content">\n        <!-- Content will be injected here -->\n      </main>',
+        f'<main id="main-content" class="main-content">{page_html}</main>'
+    )
+    
+    # SEO
+    page_content = page_content.replace('%TITLE%', seo_title)
+    page_content = page_content.replace('%DESCRIPTION%', seo_desc)
+    page_content = page_content.replace('%IMAGE%', seo_image)
+    page_content = page_content.replace('%URL%', seo_url)
+    page_content = page_content.replace('%KEYWORDS%', "privacy policy, terms of service, contact, about us")
+    page_content = page_content.replace('%CANONICAL_URL%', seo_url)
+
+    with open(os.path.join(BASE_DIR, output_filename), 'w', encoding='utf-8') as f:
+        f.write(page_content)
+
+# Content for Pages
+privacy_content = '''
+<h3>1. Introduction</h3>
+<p>Welcome to Modern Game Portal. We respect your privacy and are committed to protecting your personal data.</p>
+<h3>2. Data Collection</h3>
+<p>We do not collect personal data directly. We use third-party services like Google AdSense and Google Analytics which may use cookies to serve ads and analyze traffic.</p>
+<h3>3. Cookies</h3>
+<p>Cookies are small text files stored on your device. You can disable cookies in your browser settings. By using our site, you consent to our use of cookies.</p>
+<h3>4. Third-Party Links</h3>
+<p>Our website contains links to other sites. We are not responsible for the privacy practices of those sites.</p>
+<h3>5. Contact</h3>
+<p>If you have questions, please contact us at info@example.com.</p>
+'''
+
+terms_content = '''
+<h3>1. Acceptance of Terms</h3>
+<p>By accessing Modern Game Portal, you agree to be bound by these Terms of Service.</p>
+<h3>2. Use License</h3>
+<p>Permission is granted to play games on Modern Game Portal for personal, non-commercial transitory viewing only.</p>
+<h3>3. Disclaimer</h3>
+<p>The materials on Modern Game Portal are provided on an 'as is' basis. We make no warranties, expressed or implied.</p>
+<h3>4. Limitations</h3>
+<p>In no event shall Modern Game Portal be liable for any damages arising out of the use or inability to use the materials on our website.</p>
+'''
+
+about_content = '''
+<h3>Our Mission</h3>
+<p>Modern Game Portal shows the best free online games in a premium, ad-free environment (except for the games themselves!).</p>
+<h3>The Team</h3>
+<p>We are a small team of passionate developers and gamers dedicated to bringing you the best web gaming experience.</p>
+'''
+
+contact_content = '''
+<h3>Get in Touch</h3>
+<p>We'd love to hear from you! Whether you have a game suggestion, bug report, or just want to say hi.</p>
+<div style="margin-top: 2rem;">
+    <p><strong>Email:</strong> support@example.com</p>
+    <p><strong>Twitter:</strong> @GamePortal</p>
+</div>
+'''
+
+# Generate Content Pages
+generate_content_page('Privacy Policy', privacy_content, 'privacy.html')
+generate_content_page('Terms of Service', terms_content, 'terms.html')
+generate_content_page('About Us', about_content, 'about.html')
+generate_content_page('Contact Us', contact_content, 'contact.html')
+
+
 # 4. Generate Game Pages
 print('Generating game pages...')
 
