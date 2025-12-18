@@ -9,10 +9,10 @@ async function init() {
   // ABORT if on a static policy page (privacy, terms, about, contact)
   // This prevents the SPA router from wiping the static content
   const path = window.location.pathname;
-  if (path.includes('privacy.html') ||
-    path.includes('terms.html') ||
-    path.includes('about.html') ||
-    path.includes('contact.html')) {
+  if (path.includes('privacy') ||
+    path.includes('terms') ||
+    path.includes('about') ||
+    path.includes('contact')) {
     console.log('Static page detected, skipping SPA init');
     return;
   }
