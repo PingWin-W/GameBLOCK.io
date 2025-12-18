@@ -5,7 +5,7 @@ export function renderHeader() {
   const template = `
     <div class="header-content">
       <div class="logo-area">
-        <h1>unblocked</h1>
+        <h1>ublocked games</h1>
       </div>
       <nav class="nav-menu">
         <a href="#/" class="nav-item">

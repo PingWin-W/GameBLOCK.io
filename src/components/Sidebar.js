@@ -7,7 +7,7 @@ export function renderSidebar() {
 
   const template = `
     <div class="logo-area">
-      <h1>unblocked</h1>
+      <h1>ublocked games</h1>
     </div>
     
     <nav class="nav-menu">
