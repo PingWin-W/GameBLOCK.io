@@ -13,10 +13,9 @@ TEMPLATE_FILE = os.path.join(BASE_DIR, 'template.html')
 
 print('Starting static site generation (Root Mode)...')
 
-# Ensure games directory exists and is clean
-if os.path.exists(GAMES_DIR):
-    shutil.rmtree(GAMES_DIR)
-os.makedirs(GAMES_DIR)
+# Ensure games directory exists
+if not os.path.exists(GAMES_DIR):
+    os.makedirs(GAMES_DIR)
 
 # 1. Read Data
 with open(DATA_FILE, 'r', encoding='utf-8') as f:
@@ -124,13 +123,15 @@ def generate_grid_page(games_list, page_title, output_filename, active_nav='', s
 
 # 3.6 Generate ads.txt
 def generate_ads_txt():
-    print('Generating ads.txt...')
-    # Standard placeholder content - replaced with user's specific details later
-    content = "google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0"
-    with open(os.path.join(BASE_DIR, 'ads.txt'), 'w', encoding='utf-8') as f:
-        f.write(content)
+    # Deprecated: Do not regenerate ads.txt as it contains user ID now
+    if not os.path.exists(os.path.join(BASE_DIR, 'ads.txt')):
+         print('Generating ads.txt placeholder...')
+         content = "google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0"
+         with open(os.path.join(BASE_DIR, 'ads.txt'), 'w', encoding='utf-8') as f:
+            f.write(content)
 
-generate_ads_txt()
+# SKIP generate_ads_txt to preserve manual edits
+# generate_ads_txt()
 
 
 # Generate Home (Default Order)
@@ -294,7 +295,15 @@ for game in games:
         print(f"Skipping {name} - no ID")
         continue
 
-    game_url = f"https://html5.gamedistribution.com/{game_id}/"
+    # Determine URL: Check if local folder exists with index.html
+    # We look for a folder named '{slug}_files' inside games directory
+    # OR we look for the old public/games style if applicable, but we prefer checking GAMES_DIR
+    local_game_index = os.path.join(GAMES_DIR, f"{slug}_files", "index.html")
+    
+    if os.path.exists(local_game_index):
+        game_url = f"{slug}_files/index.html"
+    else:
+        game_url = f"https://html5.gamedistribution.com/{game_id}/"
 
     # Select 6 random other games for sidebar
     import random
