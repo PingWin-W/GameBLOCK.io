@@ -181,11 +181,9 @@ for cat in categories:
 requested_cats = ['Action', 'Arcade', 'Puzzle', 'Racing', 'Sports']
 for req_cat in requested_cats:
     req_slug = get_cat_slug(req_cat)
-    if not os.path.exists(os.path.join(BASE_DIR, f'{req_slug}.html')):
-        print(f"Generating fallback page for {req_cat}...")
-        # Fallback: shows all games or a subset if real category missing
-        # For now, show all games but title it correctly
-        generate_grid_page(games, f'{req_cat} Games', f'{req_slug}.html', active_nav=req_slug)
+    # Fallback: shows all games or a subset if real category missing
+    # For now, show all games but title it correctly
+    generate_grid_page(games, f'{req_cat} Games', f'{req_slug}.html', active_nav=req_slug)
 
 # 3.5 Helper to Generate Content Pages
 
