@@ -118,11 +118,16 @@ def generate_grid_page(games_list, page_title, output_filename, active_nav='', s
     page_content = page_content.replace('%KEYWORDS%', seo_keywords)
     page_content = page_content.replace('%CANONICAL_URL%', seo_url)
 
-    # CRITICAL: Remove main.js from popular/new pages to prevent SPA from overwriting static content
-    # We want these pages to be pure static HTML
-    if output_filename in ['popular.html', 'new.html'] or output_filename.startswith('games/'):
-         page_content = page_content.replace('<script type="module" src="./src/main.js"></script>', '')
-         page_content = page_content.replace('<script type="module" src="../src/main.js"></script>', '') # For subdirectories
+    # CRITICAL: Remove main.js from ALL static pages to prevent SPA from overwriting content
+    page_content = page_content.replace('<script type="module" src="./src/main.js"></script>', '')
+    page_content = page_content.replace('<script type="module" src="../src/main.js"></script>', '')
+
+    # Inject Static Search Script for Grid Pages
+    search_script = '<script src="./src/static-search.js" defer></script>'
+    if '/' in output_filename or '\\' in output_filename:
+         search_script = '<script src="../src/static-search.js" defer></script>'
+
+    page_content = page_content.replace('</body>', f'{search_script}\n</body>')
 
     with open(os.path.join(BASE_DIR, output_filename), 'w', encoding='utf-8') as f:
         f.write(page_content)
@@ -226,6 +231,10 @@ def generate_content_page(title, content_html, output_filename, seo_title='', se
     page_content = page_content.replace('%URL%', seo_url)
     page_content = page_content.replace('%KEYWORDS%', "privacy policy, terms of service, contact, about us")
     page_content = page_content.replace('%CANONICAL_URL%', seo_url)
+
+    # REMOVE main.js for content pages
+    page_content = page_content.replace('<script type="module" src="./src/main.js"></script>', '')
+    page_content = page_content.replace('<script type="module" src="../src/main.js"></script>', '')
 
     with open(os.path.join(BASE_DIR, output_filename), 'w', encoding='utf-8') as f:
         f.write(page_content)
@@ -446,6 +455,10 @@ for game in games:
     page_content = page_content.replace('href="./index.html"', 'href="../index.html"')
     page_content = page_content.replace('href="./popular.html"', 'href="../popular.html"')
     page_content = page_content.replace('href="./new.html"', 'href="../new.html"')
+
+    # REMOVE main.js for game pages
+    page_content = page_content.replace('<script type="module" src="./src/main.js"></script>', '')
+    page_content = page_content.replace('<script type="module" src="../src/main.js"></script>', '')
 
     with open(os.path.join(GAMES_DIR, f'{slug}.html'), 'w', encoding='utf-8') as f:
         f.write(page_content)
