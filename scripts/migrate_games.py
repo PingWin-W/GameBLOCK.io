@@ -352,7 +352,7 @@ for game in new_games:
             "id": slug,
             "name": title,
             "slug": slug,
-            "description": f"Play {title} unblocked.",
+            "description": f"Play {title} online for free. {title} is an exciting Arcade game that provides endless entertainment. Play directly in your browser without any downloads.",
             "category": "Arcade",
             "image": final_image_path,
             "iframe_url": game['iframe_url']
