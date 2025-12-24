@@ -302,11 +302,6 @@ added_count = 0
 for game in new_games:
     title = game['title']
     slug = slugify(title)
-    
-    if slug in existing_slugs:
-        # print(f"Skipping {title}, already exists.")
-        continue
-        
     print(f"Processing {title}...")
     
     # Image handling
@@ -334,21 +329,37 @@ for game in new_games:
     if os.path.exists(source_icon):
         shutil.copy(source_icon, dest_path)
     else:
-        print(f"  Warning: Icon not found: {source_icon}, using default.")
+        # print(f"  Warning: Icon not found: {source_icon}, using default.")
         final_image_path = "./public/cache/data/image/options/no_image.png"
         image_rel = "public/cache/data/image/options/no_image.png"
 
-    # Add to existing_games
-    new_entry = {
-        "id": slug,
-        "name": title,
-        "slug": slug,
-        "description": f"Play {title} unblocked.",
-        "category": "Arcade",
-        "image": final_image_path
-    }
-    existing_games.append(new_entry)
-    existing_slugs.add(slug)
+    # Find existing game to update, or create new
+    existing_game = next((g for g in existing_games if g['slug'] == slug), None)
+    
+    if existing_game:
+        # Update existing game with iframe_url if missing, or overwrite
+        print(f"Updating existing game: {title}")
+        existing_game['iframe_url'] = game['iframe_url']
+        # We don't overwrite image or other fields to preserve manual edits unless necessary
+        # But let's ensure image is set if it was missing
+        if 'image' not in existing_game or 'no_image' in existing_game['image']:
+             existing_game['image'] = final_image_path
+             
+        # No need to append
+    else:
+        # Add to existing_games
+        new_entry = {
+            "id": slug,
+            "name": title,
+            "slug": slug,
+            "description": f"Play {title} unblocked.",
+            "category": "Arcade",
+            "image": final_image_path,
+            "iframe_url": game['iframe_url']
+        }
+        existing_games.append(new_entry)
+        existing_slugs.add(slug)
+        added_count += 1
     
     # Generate HTML
     html_content = GAME_TEMPLATE.replace("{{TITLE}}", title) \

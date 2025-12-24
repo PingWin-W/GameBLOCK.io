@@ -317,6 +317,8 @@ for game in games:
         game_url = f"{slug}_files/index.html"
     elif os.path.exists(local_game_index_dir):
         game_url = f"{slug}/index.html"
+    elif game.get('iframe_url'):
+        game_url = game.get('iframe_url')
     else:
         game_url = f"https://html5.gamedistribution.com/{game_id}/"
 
